@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= typeof title !== 'undefined' ? title + ' | Art Studio' : 'Art Studio Website' %></title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/jpeg" href="/images/logo.jpg">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header>
+    <div class="container navbar">
+      <a href="/" class="logo">
+        <img src="/images/Terracotta_art_studio_logo_design_2K_20261021195902.jpg" alt="Art Studio Atelier Logo" class="brand-logo-img">
+        <span>Art Studio</span>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="/paintings">Paintings Gallery</a></li>
+          <li><a href="/bookings/new">Wall Murals</a></li>
+          <li><a href="/pottery/new">Custom Pottery</a></li>
+
+          <% if (currentUser) { %>
+            <% if (currentUser.role === 'customer') { %>
+              <li><a href="/orders">My Orders</a></li>
+              <li><a href="/bookings">My Bookings</a></li>
+              <li><a href="/pottery">My Pottery</a></li>
+            <% } else if (currentUser.role === 'studio') { %>
+              <li><a href="/orders">All Orders</a></li>
+              <li><a href="/bookings">All Bookings</a></li>
+              <li><a href="/pottery">All Pottery</a></li>
+              <li><a href="/paintings/new" class="btn btn-outline btn-sm">+ Add Painting</a></li>
+            <% } %>
+          <% } %>
+        </ul>
+      </nav>
+
+      <div class="nav-auth">
+        <% if (currentUser) { %>
+          <span class="badge <%= currentUser.role === 'studio' ? 'badge-studio' : 'badge-customer' %>">
+            <%= currentUser.role %>: <%= currentUser.name %>
+          </span>
+          <a href="/auth/logout" class="btn btn-outline btn-sm">Log Out</a>
+        <% } else { %>
+          <a href="/auth/login" class="btn btn-outline btn-sm">Log In</a>
+          <a href="/auth/register" class="btn btn-primary btn-sm">Sign Up</a>
+        <% } %>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <% if (flash && flash.success) { %>
+      <div class="flash-message flash-success">
+        <span>✓ <%= flash.success %></span>
+      </div>
+    <% } %>
+
+    <% if (flash && flash.error) { %>
+      <div class="flash-message flash-error">
+        <span>⚠ <%= flash.error %></span>
+      </div>
+    <% } %>

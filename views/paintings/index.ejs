@@ -1,0 +1,58 @@
+<%- include('../partials/header') %>
+
+<div class="page-header">
+  <div>
+    <h1 class="page-title">Original Fine Art Paintings</h1>
+    <p class="page-subtitle">Each hand-crafted piece is one of a kind and can only be acquired once.</p>
+  </div>
+
+  <div style="display: flex; gap: 8px;">
+    <a href="/paintings" class="btn <%= activeStatus === 'all' ? 'btn-primary' : 'btn-outline' %> btn-sm">All (<%= paintings.length %>)</a>
+    <a href="/paintings?status=available" class="btn <%= activeStatus === 'available' ? 'btn-primary' : 'btn-outline' %> btn-sm">Available</a>
+    <a href="/paintings?status=sold" class="btn <%= activeStatus === 'sold' ? 'btn-primary' : 'btn-outline' %> btn-sm">Sold</a>
+  </div>
+</div>
+
+<% if (!paintings || paintings.length === 0) { %>
+  <!-- UI Empty State -->
+  <div class="empty-state">
+    <div class="empty-state-icon">🎨</div>
+    <h3 class="empty-state-title">No Paintings Found</h3>
+    <p class="empty-state-text">There are currently no paintings matching your selected filter. Please check back later or reset your filter.</p>
+    <a href="/paintings" class="btn btn-primary btn-sm">View All Paintings</a>
+  </div>
+<% } else { %>
+  <div class="grid-cards">
+    <% paintings.forEach(painting => { %>
+      <div class="card <%= painting.status === 'sold' ? 'card-sold' : '' %>">
+        <div class="card-img-wrapper">
+          <img src="<%= painting.imageUrl %>" alt="<%= painting.title %>" class="card-img" onerror="this.src='https://via.placeholder.com/400x300?text=Art+Painting'">
+          <div class="card-badge">
+            <span class="badge <%= painting.status === 'available' ? 'badge-available' : 'badge-sold' %>">
+              <%= painting.status === 'available' ? '● Available' : 'Sold Out' %>
+            </span>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <h3 class="card-title">
+            <a href="/paintings/<%= painting._id %>" style="text-decoration: none; color: inherit;">
+              <%= painting.title %>
+            </a>
+          </h3>
+          <div class="card-artist">By <%= painting.artist %></div>
+          <p class="card-desc"><%= painting.description %></p>
+
+          <div class="card-footer">
+            <div class="card-price">₹<%= painting.price.toLocaleString('en-IN') %></div>
+            <a href="/paintings/<%= painting._id %>" class="btn btn-outline btn-sm">
+              View Details →
+            </a>
+          </div>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+<% } %>
+
+<%- include('../partials/footer') %>

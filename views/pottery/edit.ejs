@@ -1,0 +1,85 @@
+<%- include('../partials/header') %>
+
+<div style="margin-bottom: 20px;">
+  <a href="/pottery" style="color: var(--text-muted); text-decoration: none;">← Back to My Pottery Requests</a>
+</div>
+
+<div class="form-card" style="max-width: 600px;">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+    <h2 style="font-size: 1.5rem;">Edit Pottery Request</h2>
+    <span class="badge badge-status status-requested">⏳ Requested</span>
+  </div>
+  <p class="form-hint" style="margin-bottom: 20px;">Modify your custom pottery specifications while it is still pending studio review.</p>
+
+  <% if (errors && errors.length > 0) { %>
+    <div class="flash-message flash-error">
+      <ul style="list-style: none;">
+        <% errors.forEach(err => { %>
+          <li>⚠ <%= err.msg %></li>
+        <% }) %>
+      </ul>
+    </div>
+  <% } %>
+
+  <form action="/pottery/<%= potteryRequest._id %>?_method=PUT" method="POST">
+    <div class="form-group">
+      <label class="form-label" for="item">Select Pottery Vessel *</label>
+      <select id="item" name="item" class="form-control" required>
+        <% potteryItems.forEach(item => { %>
+          <option value="<%= item.name %>" <%= potteryRequest.item === item.name ? 'selected' : '' %>>
+            <%= item.name %>
+          </option>
+        <% }) %>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="glaze">Select Artisanal Glaze *</label>
+      <select id="glaze" name="glaze" class="form-control" required>
+        <% glazes.forEach(glaze => { %>
+          <option value="<%= glaze.name %>" <%= potteryRequest.glaze === glaze.name ? 'selected' : '' %>>
+            <%= glaze.name %>
+          </option>
+        <% }) %>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="quantity">Batch Quantity (1 to 12 pieces) *</label>
+      <input
+        type="number"
+        id="quantity"
+        name="quantity"
+        class="form-control"
+        min="1"
+        max="12"
+        required
+        value="<%= potteryRequest.quantity %>"
+      >
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="neededBy">Needed-by Date *</label>
+      <% 
+        const dateVal = potteryRequest.neededBy ? new Date(potteryRequest.neededBy).toISOString().split('T')[0] : '';
+      %>
+      <input
+        type="date"
+        id="neededBy"
+        name="neededBy"
+        class="form-control"
+        required
+        min="<%= minDate %>"
+        value="<%= dateVal %>"
+      >
+      <p class="form-hint">Must remain at least 14 days from today (<%= minDate %> or later).</p>
+    </div>
+
+    <div style="display: flex; gap: 12px; margin-top: 24px;">
+      <button type="submit" class="btn btn-primary" style="flex: 1;">Save Changes</button>
+      <a href="/pottery" class="btn btn-outline">Cancel</a>
+    </div>
+  </form>
+</div>
+
+<%- include('../partials/footer') %>

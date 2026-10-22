@@ -1,0 +1,483 @@
+<%- include('../partials/header') %>
+
+<div style="margin-bottom: 20px;">
+  <a href="/pottery" style="color: var(--text-muted); text-decoration: none;">← View All Requests</a>
+</div>
+
+
+<div id="potteryOptionA" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 32px; max-width: 980px; margin: 0 auto; align-items: start;">
+  
+  
+  <div style="display: flex; flex-direction: column; gap: 24px;">
+    
+    <div class="card" style="padding: 0; overflow: hidden;">
+      <div class="card-img-wrapper" style="height: 240px; position: relative;">
+        <img
+          id="vesselPreviewImg"
+          src="/images/Create_square_image_aspect_ratio_2K_20261022131251.jpg"
+          alt="Kulhad (cup, set of 4)"
+          class="card-img"
+          style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease;"
+        >
+        <span class="card-badge badge badge-available" id="vesselBadge" style="position: absolute; top: 12px; right: 12px; background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(4px); color: var(--primary); font-weight: 700; border: 1px solid rgba(184, 93, 56, 0.25);">
+          Selected Vessel
+        </span>
+      </div>
+      <div style="padding: 20px;">
+        <h3 id="vesselTitle" style="font-size: 1.25rem; margin-bottom: 4px; font-family: var(--font-serif); color: var(--text);">
+          Kulhad (cup, set of 4)
+        </h3>
+        <p id="vesselSubtitle" style="font-size: 0.88rem; font-weight: 600; color: var(--primary); margin-bottom: 8px;">
+          Set of traditional hand-thrown cups
+        </p>
+        <p id="vesselDesc" style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 16px;">
+          Unglazed or mineral-glazed terracotta cups wheel-thrown for hot chai, lassi, or ritual ceremonies. Imparts natural earthy aroma.
+        </p>
+
+        
+        <div>
+          <label style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 8px;">
+            Choose Vessel (Click to Select)
+          </label>
+          <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px;" id="vesselThumbGrid">
+            <button
+              type="button"
+              class="vessel-thumb-btn active"
+              data-vessel-name="Kulhad (cup, set of 4)"
+              title="Kulhad (cup, set of 4)"
+            >
+              <img src="/images/Create_square_image_aspect_ratio_2K_20261022131251.jpg" alt="Kulhad" class="vessel-thumb-img">
+            </button>
+            <button
+              type="button"
+              class="vessel-thumb-btn"
+              data-vessel-name="Surahi (water jug)"
+              title="Surahi (water jug)"
+            >
+              <img src="/images/Clay_water_jug_on_slate_2K_20261022131442.jpg" alt="Surahi" class="vessel-thumb-img">
+            </button>
+            <button
+              type="button"
+              class="vessel-thumb-btn"
+              data-vessel-name="Matka (water pot)"
+              title="Matka (water pot)"
+            >
+              <img src="/images/Clay_pot_on_teakwood_surface_2K_20261022131603.jpg" alt="Matka" class="vessel-thumb-img">
+            </button>
+            <button
+              type="button"
+              class="vessel-thumb-btn"
+              data-vessel-name="Diya set"
+              title="Diya set"
+            >
+              <img src="/images/Terracotta_Diya_oil_lamps_on_2K_20261022131741.jpg" alt="Diya set" class="vessel-thumb-img">
+            </button>
+            <button
+              type="button"
+              class="vessel-thumb-btn"
+              data-vessel-name="Gamla (planter)"
+              title="Gamla (planter)"
+            >
+              <img src="/images/Ceramic_planter_on_wooden_workbench_2K_20261022132216.jpg" alt="Gamla" class="vessel-thumb-img">
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+   
+    <div class="card" style="padding: 24px;">
+      <h3 style="font-size: 1.2rem; margin-bottom: 18px; display: flex; align-items: center; gap: 10px;">
+        <span class="atelier-icon-badge" style="width: 30px; height: 30px; margin: 0;">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#B85D3B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 3h8a1 1 0 0 1 1 1v1a5 5 0 0 1-2 4 6 6 0 0 0-2 4.5V19a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2v-5.5A6 6 0 0 0 7 9a5 5 0 0 1-2-4V4a1 1 0 0 1 1-1z"/>
+          </svg>
+        </span>
+        <span>Pottery Crafting Rules</span>
+      </h3>
+      <ul style="list-style: none; display: flex; flex-direction: column; gap: 16px; font-size: 0.92rem; color: var(--text);">
+        <li style="display: flex; gap: 12px; align-items: flex-start;">
+          <span class="atelier-icon-badge">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B85D3B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </span>
+          <div>
+            <strong>14-Day Lead Time:</strong><br>
+            <span style="color: var(--text-muted);">Each piece is wheel-thrown, trimmed, dried, bisque-fired, glazed, and glaze-fired over a two-week period.</span>
+          </div>
+        </li>
+        <li style="display: flex; gap: 12px; align-items: flex-start;">
+          <span class="atelier-icon-badge">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B85D3B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.29 7 12 12 20.71 7"/><line x1="12" y1="22" x2="12" y2="12"/>
+            </svg>
+          </span>
+          <div>
+            <strong>Batch Limits:</strong><br>
+            <span style="color: var(--text-muted);">Studio accepts custom orders from 1 to 12 pieces per request.</span>
+          </div>
+        </li>
+        <li style="display: flex; gap: 12px; align-items: flex-start;">
+          <span class="atelier-icon-badge">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B85D3B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/>
+            </svg>
+          </span>
+          <div>
+            <strong>Editing & Cancellations:</strong><br>
+            <span style="color: var(--text-muted);">You can freely edit or cancel your request while in 'requested' status before studio confirmation.</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+
+  <div class="form-card" style="margin: 0; max-width: 100%;">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px;">
+      <h2 style="font-size: 1.5rem;">Request Custom Pottery</h2>
+      <span class="atelier-icon-badge" style="width: 36px; height: 36px; border-radius: 50%; margin: 0;" title="Custom Pottery Studio">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B85D3B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+        </svg>
+      </span>
+    </div>
+    <p class="form-hint" style="margin-bottom: 24px;">
+      Handcrafted terracotta and stoneware with artisanal mineral glazes.
+    </p>
+
+    <% if (errors && errors.length > 0) { %>
+      <div class="flash-message flash-error">
+        <ul style="list-style: none;">
+          <% errors.forEach(err => { %>
+            <li>⚠ <%= err.msg %></li>
+          <% }) %>
+        </ul>
+      </div>
+    <% } %>
+
+    <form action="/pottery" method="POST" id="potteryFormA">
+      
+      <input
+        type="hidden"
+        id="itemInputA"
+        name="item"
+        value="<%= (formData && formData.item) || 'Kulhad (cup, set of 4)' %>"
+        required
+      >
+
+      
+      <div class="form-group">
+        <label class="form-label" style="display: flex; justify-content: space-between; align-items: center;">
+          <span>1. Selected Vessel *</span>
+          <span style="font-size: 0.8rem; color: var(--primary); font-weight: normal;">(Choose on left preview)</span>
+        </label>
+        <div style="display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: #ffffff; border: 1.5px solid var(--border); border-radius: var(--radius);">
+          <img id="formSelectedVesselThumbA" src="/images/Create_square_image_aspect_ratio_2K_20261022131251.jpg" alt="Vessel icon" style="width: 36px; height: 36px; border-radius: 6px; object-fit: cover;">
+          <div style="flex: 1;">
+            <div id="formSelectedVesselNameA" style="font-weight: 600; font-size: 0.95rem; color: var(--text);">
+              <%= (formData && formData.item) || 'Kulhad (cup, set of 4)' %>
+            </div>
+            <div id="formSelectedVesselSubA" style="font-size: 0.8rem; color: var(--text-muted);">
+              Traditional hand-thrown terracotta
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="form-group">
+        <label class="form-label">2. Select Artisanal Glaze *</label>
+        <input
+          type="hidden"
+          id="glazeInputA"
+          name="glaze"
+          value="<%= (formData && formData.glaze) || 'Kumkum Red' %>"
+          required
+        >
+        <div class="glaze-swatch-grid" id="glazeSwatchGridA">
+          <button type="button" class="glaze-pill-btn active" data-glaze="Kumkum Red" data-hex="#B83A2E">
+            <span class="glaze-color-dot" style="background-color: #B83A2E;"></span>
+            <span>Kumkum Red</span>
+          </button>
+          <button type="button" class="glaze-pill-btn" data-glaze="Haldi Yellow" data-hex="#D48A14">
+            <span class="glaze-color-dot" style="background-color: #D48A14;"></span>
+            <span>Haldi Yellow</span>
+          </button>
+          <button type="button" class="glaze-pill-btn" data-glaze="Mehendi Green" data-hex="#3B693A">
+            <span class="glaze-color-dot" style="background-color: #3B693A;"></span>
+            <span>Mehendi Green</span>
+          </button>
+          <button type="button" class="glaze-pill-btn" data-glaze="Indigo Blue" data-hex="#1F4E79">
+            <span class="glaze-color-dot" style="background-color: #1F4E79;"></span>
+            <span>Indigo Blue</span>
+          </button>
+          <button type="button" class="glaze-pill-btn" data-glaze="Sandalwood Beige" data-hex="#D5C4A1">
+            <span class="glaze-color-dot" style="background-color: #D5C4A1;"></span>
+            <span>Sandalwood Beige</span>
+          </button>
+          <button type="button" class="glaze-pill-btn" data-glaze="Charcoal Black" data-hex="#2B2B2B">
+            <span class="glaze-color-dot" style="background-color: #2B2B2B;"></span>
+            <span>Charcoal Black</span>
+          </button>
+        </div>
+      </div>
+
+     
+      <div class="form-group">
+        <label class="form-label" for="quantityA">3. Batch Quantity (1 to 12 pieces) *</label>
+        <div style="display: flex; gap: 12px; align-items: center;">
+          <input
+            type="number"
+            id="quantityA"
+            name="quantity"
+            class="form-control"
+            min="1"
+            max="12"
+            required
+            value="<%= (formData && formData.quantity) || '1' %>"
+            style="width: 90px; text-align: center; font-weight: 700; font-size: 1.1rem;"
+          >
+          <input
+            type="range"
+            id="quantitySliderA"
+            min="1"
+            max="12"
+            value="<%= (formData && formData.quantity) || '1' %>"
+            style="flex: 1; accent-color: var(--primary); cursor: pointer;"
+          >
+        </div>
+        <p class="form-hint" style="margin-top: 6px;">Due to studio kiln chamber size, maximum batch size is 12 units.</p>
+      </div>
+
+      
+      <div class="form-group">
+        <label class="form-label" for="neededByA">4. Needed-by Date *</label>
+        <input
+          type="date"
+          id="neededByA"
+          name="neededBy"
+          class="form-control"
+          required
+          min="<%= minDate %>"
+          value="<%= (formData && formData.neededBy) || '' %>"
+        >
+        <p class="form-hint">
+          Requires at least 14 days for throwing, sun drying, and kiln firing (Earliest: <strong><%= minDate %></strong>).
+        </p>
+      </div>
+
+      
+      <div class="selection-summary-bar">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <img id="summaryThumbA" src="/images/Create_square_image_aspect_ratio_2K_20261022131251.jpg" alt="Vessel" style="width: 32px; height: 32px; border-radius: 6px; object-fit: cover; border: 1px solid var(--border);">
+          <div>
+            <div style="font-size: 0.88rem; font-weight: 700; color: var(--text);" id="summaryVesselTitleA">Kulhad (cup, set of 4)</div>
+            <div style="font-size: 0.78rem; color: var(--text-muted); display: flex; align-items: center; gap: 5px;">
+              <span id="summaryGlazeDotA" class="glaze-color-dot" style="background-color: #B83A2E; width: 10px; height: 10px;"></span>
+              <span id="summaryGlazeNameA">Kumkum Red</span>
+              <span>•</span>
+              <span id="summaryQuantityA">1 piece</span>
+            </div>
+          </div>
+        </div>
+        <div style="text-align: right;">
+          <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Earliest Kiln Date</div>
+          <div style="font-size: 0.88rem; font-weight: 700; color: var(--primary);" id="summaryDateA"><%= minDate %></div>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary" style="width: 100%; padding: 12px; font-size: 1.05rem;">
+        Submit Pottery Request
+      </button>
+    </form>
+  </div>
+</div>
+
+
+
+
+<script>
+  // Pottery Catalog Database
+  const potteryCatalog = {
+    "Kulhad (cup, set of 4)": {
+      title: "Kulhad (cup, set of 4)",
+      shortTitle: "Kulhad",
+      subtitle: "Set of traditional hand-thrown cups",
+      desc: "Unglazed or mineral-glazed terracotta cups wheel-thrown for hot chai, lassi, or ritual ceremonies. Imparts natural earthy aroma.",
+      image: "/images/Create_square_image_aspect_ratio_2K_20261022131251.jpg"
+    },
+    "Surahi (water jug)": {
+      title: "Surahi (water jug)",
+      shortTitle: "Surahi",
+      subtitle: "Slender-neck clay water jug",
+      desc: "Long, elegant neck with micro-porous terracotta body that naturally chills spring water through gentle evaporative transudation.",
+      image: "/images/Clay_water_jug_on_slate_2K_20261022131442.jpg"
+    },
+    "Matka (water pot)": {
+      title: "Matka (water pot)",
+      shortTitle: "Matka",
+      subtitle: "Spherical natural cooling pot",
+      desc: "Broad-bellied natural terracotta pot, hand-paddled to high density and wheel-smoothed for balanced mineral hydration and coolness.",
+      image: "/images/Clay_pot_on_teakwood_surface_2K_20261022131603.jpg"
+    },
+    "Diya set": {
+      title: "Diya set",
+      shortTitle: "Diya Set",
+      subtitle: "Handcrafted oil lamp collection",
+      desc: "Set of festive oil lamps crafted from riverbed clay, tailored with petal edges for pure ghee or cold-pressed mustard oil wicks.",
+      image: "/images/Terracotta_Diya_oil_lamps_on_2K_20261022131741.jpg"
+    },
+    "Gamla (planter)": {
+      title: "Gamla (planter)",
+      shortTitle: "Gamla",
+      subtitle: "Breathable terracotta planter",
+      desc: "Heavy-gauge conical planter offering superior root aeration and natural moisture moderation for heirloom botanical specimens.",
+      image: "/images/Ceramic_planter_on_wooden_workbench_2K_20261022132216.jpg"
+    }
+  };
+
+  const glazeHexMap = {
+    "Kumkum Red": "#B83A2E",
+    "Haldi Yellow": "#D48A14",
+    "Mehendi Green": "#3B693A",
+    "Indigo Blue": "#1F4E79",
+    "Sandalwood Beige": "#D5C4A1",
+    "Charcoal Black": "#2B2B2B"
+  };
+
+  // State
+  let currentVessel = "<%= (formData && formData.item) || 'Kulhad (cup, set of 4)' %>";
+  let currentGlaze = "<%= (formData && formData.glaze) || 'Kumkum Red' %>";
+  let currentQuantity = <%= (formData && formData.quantity) || 1 %>;
+  let currentDate = "<%= (formData && formData.neededBy) || minDate %>";
+
+  // Elements (Option A)
+  const vesselPreviewImg = document.getElementById('vesselPreviewImg');
+  const vesselTitle = document.getElementById('vesselTitle');
+  const vesselSubtitle = document.getElementById('vesselSubtitle');
+  const vesselDesc = document.getElementById('vesselDesc');
+  const itemInputA = document.getElementById('itemInputA');
+  const glazeInputA = document.getElementById('glazeInputA');
+  const formSelectedVesselThumbA = document.getElementById('formSelectedVesselThumbA');
+  const formSelectedVesselNameA = document.getElementById('formSelectedVesselNameA');
+  const formSelectedVesselSubA = document.getElementById('formSelectedVesselSubA');
+  const summaryThumbA = document.getElementById('summaryThumbA');
+  const summaryVesselTitleA = document.getElementById('summaryVesselTitleA');
+  const summaryGlazeDotA = document.getElementById('summaryGlazeDotA');
+  const summaryGlazeNameA = document.getElementById('summaryGlazeNameA');
+  const summaryQuantityA = document.getElementById('summaryQuantityA');
+  const summaryDateA = document.getElementById('summaryDateA');
+  const quantityInputA = document.getElementById('quantityA');
+  const quantitySliderA = document.getElementById('quantitySliderA');
+  const neededByInputA = document.getElementById('neededByA');
+
+  function updateVesselSelection(vesselKey) {
+    if (!potteryCatalog[vesselKey]) return;
+    currentVessel = vesselKey;
+    const v = potteryCatalog[vesselKey];
+
+    if (vesselPreviewImg) {
+      vesselPreviewImg.src = v.image;
+      vesselPreviewImg.alt = v.title;
+    }
+    if (vesselTitle) vesselTitle.textContent = v.title;
+    if (vesselSubtitle) vesselSubtitle.textContent = v.subtitle;
+    if (vesselDesc) vesselDesc.textContent = v.desc;
+    if (itemInputA) itemInputA.value = v.title;
+
+    if (formSelectedVesselThumbA) formSelectedVesselThumbA.src = v.image;
+    if (formSelectedVesselNameA) formSelectedVesselNameA.textContent = v.title;
+    if (formSelectedVesselSubA) formSelectedVesselSubA.textContent = v.subtitle;
+
+    // Update thumbnail active states
+    document.querySelectorAll('.vessel-thumb-btn').forEach(btn => {
+      if (btn.getAttribute('data-vessel-name') === vesselKey) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+
+    updateSummary();
+  }
+
+  function updateGlazeSelection(glazeName, hex) {
+    currentGlaze = glazeName;
+    if (glazeInputA) glazeInputA.value = glazeName;
+
+    // Update pill active states
+    document.querySelectorAll('#glazeSwatchGridA .glaze-pill-btn').forEach(btn => {
+      if (btn.getAttribute('data-glaze') === glazeName) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+
+    updateSummary();
+  }
+
+  function updateSummary() {
+    const v = potteryCatalog[currentVessel] || potteryCatalog["Kulhad (cup, set of 4)"];
+    const hex = glazeHexMap[currentGlaze] || "#B83A2E";
+
+    if (summaryThumbA) summaryThumbA.src = v.image;
+    if (summaryVesselTitleA) summaryVesselTitleA.textContent = v.title;
+    if (summaryGlazeDotA) summaryGlazeDotA.style.backgroundColor = hex;
+    if (summaryGlazeNameA) summaryGlazeNameA.textContent = currentGlaze;
+    if (summaryQuantityA) summaryQuantityA.textContent = `${currentQuantity} ${currentQuantity > 1 ? 'pieces' : 'piece'}`;
+    if (summaryDateA) summaryDateA.textContent = currentDate || "<%= minDate %>";
+  }
+
+  // Thumbnails click events
+  document.querySelectorAll('.vessel-thumb-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const vName = btn.getAttribute('data-vessel-name');
+      updateVesselSelection(vName);
+    });
+  });
+
+  // Glaze Swatch click events
+  document.querySelectorAll('#glazeSwatchGridA .glaze-pill-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const gName = btn.getAttribute('data-glaze');
+      const gHex = btn.getAttribute('data-hex');
+      updateGlazeSelection(gName, gHex);
+    });
+  });
+
+  // Quantity sync
+  if (quantityInputA && quantitySliderA) {
+    quantityInputA.addEventListener('input', (e) => {
+      let val = parseInt(e.target.value, 10) || 1;
+      if (val < 1) val = 1;
+      if (val > 12) val = 12;
+      quantitySliderA.value = val;
+      currentQuantity = val;
+      updateSummary();
+    });
+
+    quantitySliderA.addEventListener('input', (e) => {
+      let val = parseInt(e.target.value, 10) || 1;
+      quantityInputA.value = val;
+      currentQuantity = val;
+      updateSummary();
+    });
+  }
+
+  // Date sync
+  if (neededByInputA) {
+    neededByInputA.addEventListener('change', (e) => {
+      currentDate = e.target.value;
+      updateSummary();
+    });
+  }
+
+  // Initialize
+  updateVesselSelection(currentVessel);
+  updateGlazeSelection(currentGlaze, glazeHexMap[currentGlaze]);
+</script>
+
+<%- include('../partials/footer') %>

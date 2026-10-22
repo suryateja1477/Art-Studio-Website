@@ -1,0 +1,126 @@
+<%- include('../partials/header') %>
+
+<div class="page-header">
+  <div>
+    <h1 class="page-title"><%= currentUser.role === 'studio' ? 'All Custom Pottery Requests' : 'My Custom Pottery Requests' %></h1>
+    <p class="page-subtitle">
+      <%= currentUser.role === 'studio' ? 'Review, accept, or decline customer custom-glazed ceramic requests.' : 'Track your bespoke pottery batch requests and studio review status.' %>
+    </p>
+  </div>
+
+  <% if (currentUser.role === 'customer') { %>
+    <a href="/pottery/new" class="btn btn-primary btn-sm">+ Request Custom Pottery</a>
+  <% } %>
+</div>
+
+<% if (!requests || requests.length === 0) { %>
+  <!-- UI Empty State -->
+  <div class="empty-state">
+    <div class="empty-state-icon">🏺</div>
+    <h3 class="empty-state-title">No Pottery Requests</h3>
+    <p class="empty-state-text">
+      <%= currentUser.role === 'studio' ? 'No custom pottery orders have been submitted yet.' : 'You have not submitted any custom pottery requests yet. Choose from our authentic clay vessels and glazes!' %>
+    </p>
+    <% if (currentUser.role === 'customer') { %>
+      <a href="/pottery/new" class="btn btn-primary btn-sm">Create First Request</a>
+    <% } %>
+  </div>
+<% } else { %>
+  <div class="table-responsive">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th class="col-date">Submitted Date</th>
+          <% if (currentUser.role === 'studio') { %>
+            <th class="col-customer">Customer</th>
+          <% } %>
+          <th class="col-vessel">Vessel Item</th>
+          <th class="col-glaze">Glaze Finish</th>
+          <th class="col-qty">Quantity</th>
+          <th class="col-date">Needed-by Date</th>
+          <th class="col-status">Status</th>
+          <th class="col-actions">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% requests.forEach(reqItem => { %>
+          <tr>
+            <td class="col-date">
+              <%= new Date(reqItem.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }) %>
+            </td>
+
+            <% if (currentUser.role === 'studio') { %>
+              <td class="col-customer">
+                <strong><%= reqItem.customer ? reqItem.customer.name : 'Unknown User' %></strong>
+                <div class="form-hint col-nowrap"><%= reqItem.customer ? reqItem.customer.email : 'N/A' %></div>
+              </td>
+            <% } %>
+
+            <td class="col-vessel">
+              <strong><%= reqItem.item %></strong>
+            </td>
+
+            <td class="col-glaze">
+              <span class="glaze-badge">
+                <%= reqItem.glaze %>
+              </span>
+            </td>
+
+            <td class="col-qty" style="font-weight: 600;">
+              <%= reqItem.quantity %> pcs
+            </td>
+
+            <td class="col-date">
+              <strong><%= new Date(reqItem.neededBy).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }) %></strong>
+            </td>
+
+            <td class="col-status">
+              <span class="badge-status status-<%= reqItem.status %>">
+                <% if (reqItem.status === 'requested') { %> ⏳ Requested <% } %>
+                <% if (reqItem.status === 'accepted') { %> ✓ Accepted <% } %>
+                <% if (reqItem.status === 'declined') { %> ✗ Declined <% } %>
+                <% if (reqItem.status === 'cancelled') { %> ⊘ Cancelled <% } %>
+              </span>
+            </td>
+
+            <td class="col-actions">
+              <div class="actions-cell">
+                <% if (currentUser.role === 'customer') { %>
+                  <% if (reqItem.status === 'requested') { %>
+                    <a href="/pottery/<%= reqItem._id %>/edit" class="btn btn-outline btn-sm" style="padding: 4px 10px;">
+                      Edit
+                    </a>
+                    <form action="/pottery/<%= reqItem._id %>/cancel" method="POST" onsubmit="return confirm('Cancel this custom pottery request?');" style="margin: 0;">
+                      <button type="submit" class="btn btn-outline btn-sm" style="padding: 4px 10px; color: var(--error); border-color: #ffcdd2;">
+                        Cancel
+                      </button>
+                    </form>
+                  <% } else { %>
+                    <span class="form-hint col-nowrap">Locked (<%= reqItem.status %>)</span>
+                  <% } %>
+                <% } else if (currentUser.role === 'studio') { %>
+                  <% if (reqItem.status === 'requested') { %>
+                    <form action="/pottery/<%= reqItem._id %>/accept" method="POST" style="margin: 0;">
+                      <button type="submit" class="btn btn-primary btn-sm" style="padding: 4px 10px;">
+                        Accept
+                      </button>
+                    </form>
+                    <form action="/pottery/<%= reqItem._id %>/decline" method="POST" style="margin: 0;">
+                      <button type="submit" class="btn btn-outline btn-sm" style="padding: 4px 10px; color: var(--error);">
+                        Decline
+                      </button>
+                    </form>
+                  <% } else { %>
+                    <span class="form-hint col-nowrap">Resolved (<%= reqItem.status %>)</span>
+                  <% } %>
+                <% } %>
+              </div>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+<% } %>
+
+<%- include('../partials/footer') %>

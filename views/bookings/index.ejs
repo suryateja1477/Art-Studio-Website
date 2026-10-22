@@ -1,0 +1,124 @@
+<%- include('../partials/header') %>
+
+<div class="page-header">
+  <div>
+    <h1 class="page-title"><%= currentUser.role === 'studio' ? 'All Wall Mural Bookings' : 'My Wall Mural Bookings' %></h1>
+    <p class="page-subtitle">
+      <%= currentUser.role === 'studio' ? 'Review, confirm, or decline customer on-site mural requests.' : 'Track your scheduled on-site wall painting dates and statuses.' %>
+    </p>
+  </div>
+
+  <% if (currentUser.role === 'customer') { %>
+    <a href="/bookings/new" class="btn btn-primary btn-sm">+ Book a New Mural Date</a>
+  <% } %>
+</div>
+
+<% if (!bookings || bookings.length === 0) { %>
+  <!-- UI Empty State -->
+  <div class="empty-state">
+    <div class="empty-state-icon">🎨</div>
+    <h3 class="empty-state-title">No Bookings Scheduled</h3>
+    <p class="empty-state-text">
+      <%= currentUser.role === 'studio' ? 'No customers have requested on-site wall mural painting yet.' : 'You have not scheduled any wall murals yet. Pick an open date from 7 to 90 days away!' %>
+    </p>
+    <% if (currentUser.role === 'customer') { %>
+      <a href="/bookings/new" class="btn btn-primary btn-sm">Schedule a Wall Date</a>
+    <% } %>
+  </div>
+<% } else { %>
+  <div class="table-responsive">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Execution Date</th>
+          <% if (currentUser.role === 'studio') { %>
+            <th>Customer</th>
+          <% } %>
+          <th>Wall Size</th>
+          <th>Location Address</th>
+          <th>Total Cost</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% bookings.forEach(booking => { %>
+          <tr>
+            <td>
+              <strong><%= new Date(booking.date).toLocaleDateString('en-IN', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' }) %></strong>
+              <div class="form-hint">ISO: <%= booking.dateString %></div>
+            </td>
+
+            <% if (currentUser.role === 'studio') { %>
+              <td>
+                <strong><%= booking.customer ? booking.customer.name : 'Unknown Client' %></strong>
+                <div class="form-hint"><%= booking.customer ? booking.customer.email : 'N/A' %></div>
+              </td>
+            <% } %>
+
+            <td>
+              <strong><%= booking.wallSizeSqFt %> sq. ft.</strong>
+              <div class="form-hint">@ ₹<%= booking.ratePerSqFt %>/sq. ft.</div>
+            </td>
+
+            <td style="max-width: 220px; font-size: 0.88rem;">
+              <%= booking.address %>
+            </td>
+
+            <td style="font-weight: 700; color: var(--text);">
+              ₹<%= booking.totalPrice.toLocaleString('en-IN') %>
+            </td>
+
+            <td>
+              <span class="badge badge-status status-<%= booking.status %>">
+                <% if (booking.status === 'requested') { %> ⏳ Requested <% } %>
+                <% if (booking.status === 'confirmed') { %> ✓ Confirmed <% } %>
+                <% if (booking.status === 'declined') { %> ✗ Declined <% } %>
+                <% if (booking.status === 'cancelled') { %> ⊘ Cancelled <% } %>
+              </span>
+            </td>
+
+            <td class="col-actions">
+              <div class="actions-cell">
+                <% if (currentUser.role === 'customer') { %>
+                  <% if (booking.canCancel) { %>
+                    <form action="/bookings/<%= booking._id %>/cancel" method="POST" onsubmit="return confirm('Cancel this wall mural booking? The date will become open again.');" style="margin: 0;">
+                      <button type="submit" class="btn btn-outline btn-sm" style="color: var(--error); border-color: #ffcdd2;">
+                        Cancel Booking
+                      </button>
+                    </form>
+                  <% } else if (booking.status === 'cancelled') { %>
+                    <span class="form-hint col-nowrap">Cancelled</span>
+                  <% } else if (['requested', 'confirmed'].includes(booking.status)) { %>
+                    <span class="form-hint col-nowrap" title="Cancellations close 3 days before scheduled date">
+                      🔒 Locked (&lt;3 days)
+                    </span>
+                  <% } else { %>
+                    <span class="form-hint col-nowrap">-</span>
+                  <% } %>
+                <% } else if (currentUser.role === 'studio') { %>
+                  <% if (booking.status === 'requested') { %>
+                    <form action="/bookings/<%= booking._id %>/confirm" method="POST" style="margin: 0;">
+                      <button type="submit" class="btn btn-primary btn-sm" style="padding: 4px 10px;">
+                        Confirm
+                      </button>
+                    </form>
+                    <form action="/bookings/<%= booking._id %>/decline" method="POST" style="margin: 0;">
+                      <button type="submit" class="btn btn-outline btn-sm" style="padding: 4px 10px; color: var(--error);">
+                        Decline
+                      </button>
+                    </form>
+                  <% } else { %>
+                    <span class="form-hint col-nowrap">Resolved (<%= booking.status %>)</span>
+                  <% } %>
+                <% } %>
+              </div>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+<% } %>
+
+<%- include('../partials/footer') %>

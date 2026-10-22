@@ -1,0 +1,109 @@
+<%- include('../partials/header') %>
+
+<div class="page-header">
+  <div>
+    <h1 class="page-title"><%= currentUser.role === 'studio' ? 'All Painting Orders' : 'My Painting Orders' %></h1>
+    <p class="page-subtitle">
+      <%= currentUser.role === 'studio' ? 'Monitor all customer purchases and cancellations.' : 'View your painting orders or cancel an active purchase.' %>
+    </p>
+  </div>
+
+  <% if (currentUser.role === 'customer') { %>
+    <a href="/paintings" class="btn btn-outline btn-sm">+ Buy More Art</a>
+  <% } %>
+</div>
+
+<% if (!orders || orders.length === 0) { %>
+  <!-- UI Empty State -->
+  <div class="empty-state">
+    <div class="empty-state-icon">📦</div>
+    <h3 class="empty-state-title">No Orders Yet</h3>
+    <p class="empty-state-text">
+      <%= currentUser.role === 'studio' ? 'No orders have been placed by customers yet.' : 'You have not acquired any paintings yet. Explore our one-of-a-kind original art collection!' %>
+    </p>
+    <a href="/paintings" class="btn btn-primary btn-sm">Explore Gallery</a>
+  </div>
+<% } else { %>
+  <div class="table-responsive">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Order Date</th>
+          <% if (currentUser.role === 'studio') { %>
+            <th>Customer</th>
+          <% } %>
+          <th>Artwork</th>
+          <th>Price</th>
+          <th>Status</th>
+          <% if (currentUser.role === 'customer') { %>
+            <th>Action</th>
+          <% } %>
+        </tr>
+      </thead>
+      <tbody>
+        <% orders.forEach(order => { %>
+          <tr>
+            <td>
+              <%= new Date(order.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }) %>
+              <div class="form-hint"><%= new Date(order.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) %></div>
+            </td>
+
+            <% if (currentUser.role === 'studio') { %>
+              <td>
+                <strong><%= order.customer ? order.customer.name : 'Unknown User' %></strong>
+                <div class="form-hint"><%= order.customer ? order.customer.email : 'N/A' %></div>
+              </td>
+            <% } %>
+
+            <td>
+              <% if (order.painting) { %>
+                <div style="display: flex; align-items: center; gap: 12px;">
+                  <img
+                    src="<%= order.painting.imageUrl %>"
+                    alt="<%= order.painting.title %>"
+                    style="width: 44px; height: 44px; object-fit: cover; border-radius: 4px; border: 1px solid var(--border);"
+                    onerror="this.src='https://via.placeholder.com/44'"
+                  >
+                  <div>
+                    <a href="/paintings/<%= order.painting._id %>" style="color: inherit; font-weight: 600; text-decoration: none;">
+                      <%= order.painting.title %>
+                    </a>
+                    <div class="form-hint">By <%= order.painting.artist %></div>
+                  </div>
+                </div>
+              <% } else { %>
+                <span style="color: var(--text-muted); font-style: italic;">Artwork record unavailable</span>
+              <% } %>
+            </td>
+
+            <td style="font-weight: 700;">
+              ₹<%= order.totalPrice.toLocaleString('en-IN') %>
+            </td>
+
+            <td>
+              <span class="badge badge-status status-<%= order.status %>">
+                <%= order.status === 'placed' ? '✓ Placed' : '✗ Cancelled' %>
+              </span>
+            </td>
+
+            <% if (currentUser.role === 'customer') { %>
+              <td>
+                <% if (order.status === 'placed') { %>
+                  <form action="/orders/<%= order._id %>/cancel" method="POST" onsubmit="return confirm('Cancel this order? The painting will become available to other collectors.');">
+                    <button type="submit" class="btn btn-outline btn-sm" style="color: var(--error); border-color: #ffcdd2;">
+                      Cancel Order
+                    </button>
+                  </form>
+                <% } else { %>
+                  <span class="form-hint">Order Cancelled</span>
+                <% } %>
+              </td>
+            <% } %>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+<% } %>
+
+<%- include('../partials/footer') %>

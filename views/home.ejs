@@ -1,0 +1,241 @@
+<%- include('partials/header') %>
+
+<section class="hero-section">
+  <!-- Left Column: Headline, Description, Action Buttons, and 3 Stats -->
+  <div class="hero-left">
+    <span class="badge badge-studio hero-badge">Artisan &amp; Fine Crafts Atelier</span>
+    <h1 class="hero-title">
+      Handmade Art, Tailored Murals &amp; Studio Ceramics
+    </h1>
+    <p class="hero-desc">
+      Explore authentic Indian folk and contemporary original paintings, schedule professional on-site wall painting installations, or request custom-glazed pottery batches.
+    </p>
+
+    <div class="hero-actions">
+      <a href="/paintings" class="btn btn-primary">Browse Paintings Gallery</a>
+      <a href="/bookings/new" class="btn btn-outline">Book a Wall Mural</a>
+      <a href="/pottery/new" class="btn btn-outline">Request Custom Pottery</a>
+    </div>
+
+    <!-- 3 Key Studio Stats -->
+    <div class="hero-stats">
+      <div class="hero-stat-card">
+        <span class="hero-stat-value">100%</span>
+        <span class="hero-stat-label">Natural Earth Pigments</span>
+      </div>
+      <div class="hero-stat-divider"></div>
+      <div class="hero-stat-card">
+        <span class="hero-stat-value">240+</span>
+        <span class="hero-stat-label">Private Commissions</span>
+      </div>
+      <div class="hero-stat-divider"></div>
+      <div class="hero-stat-card">
+        <span class="hero-stat-value">14 Days</span>
+        <span class="hero-stat-label">Studio Hand-curing</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right Column: "Featured Masterpiece" Card -->
+  <div class="hero-right">
+    <div class="masterpiece-card">
+      <div class="masterpiece-media-wrapper">
+        <img 
+          src="/images/Abstract_painting_hanging_on_wall_2K_20261022174821.jpg" 
+          alt="Earthen Sanctuary, Opus 42" 
+          class="masterpiece-img"
+        >
+        <div class="masterpiece-badge-overlay">
+          <span class="dot"></span>
+          <span>Featured Masterpiece</span>
+        </div>
+      </div>
+      <div class="masterpiece-body">
+        <div class="masterpiece-meta-row">
+          <span class="masterpiece-edition">Opus 42 • Art Highlight</span>
+          <span class="masterpiece-status">Exhibition Piece</span>
+        </div>
+        <h2 class="masterpiece-title">Earthen Sanctuary, Opus 42</h2>
+        <p class="masterpiece-desc">
+          Rooted in ancient soil pigments and wood-fired ceramics, celebrating authentic Indian folk traditions and living studio craftsmanship.
+        </p>
+        <div class="masterpiece-footer">
+          <div class="masterpiece-specs">
+            <span class="specs-label">Craft &amp; Medium</span>
+            <span class="specs-value">Natural Mineral Dyes on Handloom Canvas</span>
+          </div>
+          <a href="/paintings" class="btn btn-outline btn-sm masterpiece-action">
+            View Gallery &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Centered 3-Column Features Showcase -->
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; max-width: 1300px; margin: 30px auto 60px; justify-content: center;">
+  <div class="service-card">
+    <div class="service-card-img-wrapper">
+      <img src="/images/service-paintings.jpg" alt="1 · Original Paintings" class="service-card-img">
+    </div>
+    <div class="service-card-body">
+      <div>
+        <h3 class="service-card-title">1 · Original Paintings</h3>
+        <p class="service-card-desc">
+          Each piece is one-of-a-kind and hand-painted. Once bought, it is marked as sold and reserved exclusively for you. You can cancel your order to return it to the gallery.
+        </p>
+      </div>
+      <a href="/paintings" class="btn btn-outline btn-sm" style="width: 100%; max-width: 200px;">Explore Paintings →</a>
+    </div>
+  </div>
+
+  <div class="service-card">
+    <div class="service-card-img-wrapper">
+      <img src="/images/service-murals.jpg" alt="2 · Wall Mural Bookings" class="service-card-img">
+    </div>
+    <div class="service-card-body">
+      <div>
+        <h3 class="service-card-title">2 · Wall Mural Bookings</h3>
+        <p class="service-card-desc">
+          Transform your home or workspace with custom murals. Dynamic pricing at ₹150/sq. ft. Pick any open date between 7 and 90 days in advance.
+        </p>
+      </div>
+      <a href="/bookings/new" class="btn btn-outline btn-sm" style="width: 100%; max-width: 200px;">Book a Date →</a>
+    </div>
+  </div>
+
+  <div class="service-card">
+    <div class="service-card-img-wrapper">
+      <img src="/images/service-pottery.jpg" alt="3 · Custom Studio Pottery" class="service-card-img">
+    </div>
+    <div class="service-card-body">
+      <div>
+        <h3 class="service-card-title">3 · Custom Studio Pottery</h3>
+        <p class="service-card-desc">
+          Choose from traditional vessels (Kulhads, Surahis, Matkas, Diyas) and artisanal glazes (Kumkum Red, Haldi Yellow). Minimum 14 days lead time for kiln firing.
+        </p>
+      </div>
+      <a href="/pottery/new" class="btn btn-outline btn-sm" style="width: 100%; max-width: 200px;">Submit Request →</a>
+    </div>
+  </div>
+</div>
+
+<!-- Living Atelier Manifesto Section -->
+<section class="manifesto-section" id="craft-philosophy">
+  <!-- Left Side: 2x2 Asymmetric Mosaic Grid -->
+  <div class="manifesto-mosaic">
+    <!-- Column 1 -->
+    <div class="mosaic-col mosaic-col-1">
+      <div class="mosaic-img-frame frame-grinding">
+        <img 
+          src="/images/Artisan_grinding_red_ochre_mineral_2K_20261022174309.jpg" 
+          alt="Artisan grinding natural red ochre mineral pigments" 
+          class="mosaic-photo"
+        >
+      </div>
+      <div class="mosaic-info-card card-nontoxic">
+        <h3 class="mosaic-title title-terracotta">100% Non-Toxic</h3>
+        <p class="mosaic-desc">
+          Naturally processed without synthetic solvents, petroleum binders, or heavy metal stabilizers.
+        </p>
+      </div>
+    </div>
+
+    <!-- Column 2 -->
+    <div class="mosaic-col mosaic-col-2">
+      <div class="mosaic-info-card card-provenance">
+        <h3 class="mosaic-title title-sage">Direct<br>Provenance</h3>
+        <p class="mosaic-desc">
+          Every vessel and artwork bears the etched signature seal of its creator artisan.
+        </p>
+      </div>
+      <div class="mosaic-img-frame frame-potter">
+        <img 
+          src="/images/make_the_woman_old_2K_20261022175441.jpg" 
+          alt="Master artisan shaping clay pottery on the wheel" 
+          class="mosaic-photo"
+        >
+      </div>
+    </div>
+  </div>
+
+  <!-- Right Side: Narrative & Value Propositions -->
+  <div class="manifesto-content">
+    <div class="manifesto-eyebrow">
+      <span class="dash">—</span> LIVING ATELIER MANIFESTO
+    </div>
+    <h2 class="manifesto-heading">
+      Rooted in the Soil,<br>
+      <span class="heading-accent">Honoring the Artisan's Trace.</span>
+    </h2>
+    <div class="manifesto-paragraphs">
+      <p>
+        At Art Studio, we believe that true luxury lies in patience and tangible authenticity. In an age of synthetic saturation, our studio retreats to the raw fundamentals: crushed rocks, river clays, tree saps, and sun-dried canvases.
+      </p>
+      <p>
+        Each painting and vessel carries the geological fingerprints of its origin. We collaborate directly with hereditary potters and traditional pigment gatherers, preserving vernacular craftsmanship while creating bold contemporary masterworks tailored for timeless living spaces.
+      </p>
+    </div>
+
+    <!-- 3 Value Proposition Cards -->
+    <div class="manifesto-value-list">
+      <div class="manifesto-value-item">
+        <div class="value-item-icon icon-peach">
+          <!-- Mineral / Earth Pigments Swirl Icon -->
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M12 2a4.5 4.5 0 0 0 0 9 4.5 4.5 0 0 1 0 9"></path>
+            <circle cx="12" cy="7" r="1.5" fill="currentColor"></circle>
+            <circle cx="12" cy="17" r="1.5" fill="currentColor"></circle>
+          </svg>
+        </div>
+        <div class="value-item-text">
+          <h4 class="value-item-title">100% Non-Toxic Mineral Pigments</h4>
+          <p class="value-item-desc">
+            Formulated using natural gum arabic, cold-pressed walnut oil, and limestone binders for healthy interior air quality.
+          </p>
+        </div>
+      </div>
+
+      <div class="manifesto-value-item">
+        <div class="value-item-icon icon-teal">
+          <!-- Small batch ceramics / pottery craft icon -->
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 11a8 8 0 0 1 16 0"></path>
+            <path d="M2 17h20"></path>
+            <path d="M6 21h12"></path>
+            <circle cx="12" cy="11" r="3"></circle>
+          </svg>
+        </div>
+        <div class="value-item-text">
+          <h4 class="value-item-title">Handcrafted in Small Batches</h4>
+          <p class="value-item-desc">
+            We never mass-manufacture. No two vessels or canvas textures are identical; each piece embraces poetic wabi-sabi nuance.
+          </p>
+        </div>
+      </div>
+
+      <div class="manifesto-value-item">
+        <div class="value-item-icon icon-amber">
+          <!-- Direct Provenance Covenant Icon -->
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+        </div>
+        <div class="value-item-text">
+          <h4 class="value-item-title">Direct Artisan Provenance</h4>
+          <p class="value-item-desc">
+            Every commission directly honors the indigenous craft lineage of our artisans with ethical profit-sharing covenants.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>
+

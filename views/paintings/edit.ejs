@@ -1,0 +1,114 @@
+<%- include('../partials/header') %>
+
+<div style="margin-bottom: 20px;">
+  <a href="/paintings/<%= painting._id %>" style="color: var(--text-muted); text-decoration: none;">← Back to Painting</a>
+</div>
+
+<div class="form-card" style="max-width: 680px; margin: 30px auto;">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+    <h2 style="font-size: 1.5rem;">Edit Painting</h2>
+    <span class="badge badge-studio">Studio Admin</span>
+  </div>
+  <p class="form-hint" style="margin-bottom: 24px;">Update details for this available artwork. (Sold paintings cannot be edited per studio rules).</p>
+
+  <% if (errors && errors.length > 0) { %>
+    <div class="flash-message flash-error">
+      <ul style="list-style: none;">
+        <% errors.forEach(err => { %>
+          <li>⚠ <%= err.msg %></li>
+        <% }) %>
+      </ul>
+    </div>
+  <% } %>
+
+  <form action="/paintings/<%= painting._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+      <label class="form-label" for="title">Painting Title *</label>
+      <input
+        type="text"
+        id="title"
+        name="title"
+        class="form-control"
+        required
+        value="<%= painting.title %>"
+      >
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="artist">Artist Name *</label>
+      <input
+        type="text"
+        id="artist"
+        name="artist"
+        class="form-control"
+        required
+        value="<%= painting.artist %>"
+      >
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="description">Detailed Description & Dimensions *</label>
+      <textarea
+        id="description"
+        name="description"
+        rows="4"
+        class="form-control"
+        required
+      ><%= painting.description %></textarea>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="price">Price (INR ₹) *</label>
+      <input
+        type="number"
+        id="price"
+        name="price"
+        class="form-control"
+        min="1"
+        required
+        value="<%= painting.price %>"
+      >
+    </div>
+
+    <!-- Image Update Section -->
+    <div style="background: #faf8f5; border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; margin-bottom: 20px;">
+      <label class="form-label" style="font-size: 1rem; margin-bottom: 4px;">Artwork Image</label>
+      <p class="form-hint" style="margin-bottom: 14px;">Current image: <code><%= painting.imageUrl %></code></p>
+
+      <div class="form-group" style="margin-bottom: 16px;">
+        <label class="form-label" for="imageFile" style="font-weight: 500; font-size: 0.88rem;">📁 Upload New Image File (Replaces current)</label>
+        <input
+          type="file"
+          id="imageFile"
+          name="imageFile"
+          class="form-control"
+          accept="image/*"
+        >
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 12px; margin: 10px 0;">
+        <hr style="flex: 1; border: none; border-top: 1px solid var(--border);">
+        <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">OR KEEP / EDIT URL</span>
+        <hr style="flex: 1; border: none; border-top: 1px solid var(--border);">
+      </div>
+
+      <div class="form-group" style="margin-bottom: 0;">
+        <label class="form-label" for="imageUrl" style="font-weight: 500; font-size: 0.88rem;">🔗 Image URL or Seed Path</label>
+        <input
+          type="text"
+          id="imageUrl"
+          name="imageUrl"
+          class="form-control"
+          value="<%= painting.imageUrl %>"
+        >
+      </div>
+    </div>
+
+    <div style="display: flex; gap: 12px; margin-top: 20px;">
+      <button type="submit" class="btn btn-primary" style="flex: 1;">Save Changes</button>
+      <a href="/paintings/<%= painting._id %>" class="btn btn-outline">Cancel</a>
+    </div>
+  </form>
+</div>
+
+<%- include('../partials/footer') %>
